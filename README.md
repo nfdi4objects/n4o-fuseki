@@ -1,9 +1,24 @@
 # Fuseki Docker image for NFDI4Objects
 
+[![Docker image](https://github.com/nfdi4objects/n4o-fuseki/actions/workflows/docker.yml/badge.svg)](https://github.com/nfdi4objects/n4o-fuseki/actions/workflows/docker.yml)
+
 This [git repository](https://github.com/nfdi4objects/n4o-fuseki) contains sources to generate a Docker image configured to be used as Triple store of the [NFDI4Objects Knowledge Graph](https://graph.nfdi4objects.net/).
 
 The sources are copied from [Apache Jena Fuseki Docker Tools](https://github.com/apache/jena/tree/main/jena-fuseki2/jena-fuseki-docker)
 
+## Usage
+
+...
+
+## Build
+
+A Docker image is automatically build via GitHub action. The Jena version is hard-coded in [the workflow file](.github/workflows/docker.yml).
+
+To locally build the image for testing:
+
+~~~sh
+docker compose build --build-arg JENA_VERSION=5.3.0
+~~~
 
 ## License
 
