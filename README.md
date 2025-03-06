@@ -6,17 +6,24 @@ This [git repository](https://github.com/nfdi4objects/n4o-fuseki) contains sourc
 
 ## Installation
 
-File `docker-compose.yml` should contain everything needed to start Fuseki with configuration in `config.ttl`:
+A container can be started for testing with one command:
 
 ~~~sh
-docker compose up
+docker run ghcr.io/nfdi4objects/n4o-fuseki:main
 ~~~
 
-The container uses two volumes: `databases` and `logs`. Both most be writeable by user `1000` before starting the container:
+For stable deployment better use a `docker-compose.yml`. See [docker-compose.yml](docker-compose.yml) from this repository for reference.
+The container uses two volumes: `databases` and `logs`. Both must be writeable by user `1000` before starting the container:
 
 ~~~sh
 mkdir databases ; sudo chown 1000:1000 databases
 mkdir logs ; sudo chown 1000:1000 logs                  # not used unless logging to file is enabled
+~~~
+
+Then create and start the container:
+
+~~~sh
+docker compose up
 ~~~
 
 ## Usage
