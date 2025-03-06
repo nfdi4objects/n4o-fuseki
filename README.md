@@ -4,7 +4,7 @@
 
 This [git repository](https://github.com/nfdi4objects/n4o-fuseki) contains sources to generate a Docker image configured to be used as Triple store of the [NFDI4Objects Knowledge Graph](https://graph.nfdi4objects.net/).
 
-## Usage
+## Installation
 
 File `docker-compose.yml` should contain everything needed to start Fuseki with configuration in `config.ttl`:
 
@@ -19,7 +19,9 @@ mkdir databases ; sudo chown 1000:1000 databases
 mkdir logs ; sudo chown 1000:1000 logs                  # not used unless logging to file is enabled
 ~~~
 
-Fuseki is configured to provide the following APIs at <http://localhost:3030/n4o> (or at another port set with `PORT`) without authentification:
+## Usage
+
+Fuseki is [configured](config.ttl) to provide the following APIs at <http://localhost:3030/n4o> (or at another port set with `PORT`) without authentification:
 
 - SPARQL Query
 - SPARQL Update
@@ -27,14 +29,16 @@ Fuseki is configured to provide the following APIs at <http://localhost:3030/n4o
 
 The default graph is set to the the union of all named graphs.
 
+There is no graphical user interface. Please use <https://github.com/nfdi4objects/n4o-graph-apis> as frontend.
+
 ## Build and test
 
-A [Docker image](https://github.com/nfdi4objects/n4o-fuseki/pkgs/container/n4o-fuseki) is automatically build via GitHub action (except for changes that only affect this Markdown file). The Jena version is hard-coded in [the workflow file](.github/workflows/docker.yml).
+A [Docker image](https://github.com/nfdi4objects/n4o-fuseki/pkgs/container/n4o-fuseki) is automatically build via GitHub action (except for changes that only affect this Markdown file).
 
 To locally build the image for testing:
 
 ~~~sh
-docker compose build --build-arg JENA_VERSION=5.3.0
+docker compose build
 ~~~
 
 The script `test.sh` runs queries against all APIs to make sure data can be read and written (port can be set with `PORT`).
