@@ -1,0 +1,33 @@
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tdb:     <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix :        <#> .
+
+#[] rdf:type fuseki: Server .
+
+<#service1> a fuseki:Service ;
+    fuseki:name "n4o" ;                     # http://host:port/n4o
+    fuseki:endpoint [                       # SPARQL query
+        fuseki:operation fuseki:query
+    ] ;
+    fuseki:endpoint  [                      # SPARQL update
+        fuseki:operation fuseki:update
+    ] ;
+    fuseki:endpoint  [                      # SPARQL Graph Store Protocol (read)
+        fuseki:operation fuseki:gsp-r 
+    ] ;
+    fuseki:endpoint  [                      # SPARQL Graph Store Protocol (read and write)
+        fuseki:operation fuseki:gsp-rw
+    ] ;
+    fuseki:dataset <#dataset> 
+    .
+
+<#dataset> a tdb:DatasetTDB ;
+	tdb:unionDefaultGraph true ;
+    tdb:location  "/fuseki/databases/n4o" ;
+
+    # Query timeout on this dataset (1s, 1000 milliseconds)
+    ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ]  
+     .

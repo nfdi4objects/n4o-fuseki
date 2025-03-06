@@ -120,5 +120,7 @@ ENV \
 
 EXPOSE 3030
 
-ENTRYPOINT ["./entrypoint.sh" ]
+## Include configuration
+ADD config.ttl .
+ENTRYPOINT ["./entrypoint.sh", "--config", "config.ttl" ]
 CMD []
