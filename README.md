@@ -12,12 +12,18 @@ A container can be started for testing with one command:
 docker run ghcr.io/nfdi4objects/n4o-fuseki:main
 ~~~
 
-For stable deployment better use a `docker-compose.yml`. See [docker-compose.yml](docker-compose.yml) from this repository for reference.
-The container uses two volumes: `databases` and `logs`. Both must be writeable by user `1000` before starting the container:
+For stable deployment better use a `docker-compose.yml` instead. See [docker-compose.yml](docker-compose.yml) from this repository for reference.
+
+The container can optionally be attached to with two volumes:
+
+- `databases` to store database outside of the container
+- `logs` to write logfiles (not used yet as logging to file is not enabled)
+
+Both directories must be writeable by user `1000` before starting the container:
 
 ~~~sh
 mkdir databases ; sudo chown 1000:1000 databases
-mkdir logs ; sudo chown 1000:1000 logs                  # not used unless logging to file is enabled
+mkdir logs ; sudo chown 1000:1000 logs
 ~~~
 
 Then create and start the container:
@@ -38,6 +44,8 @@ The default graph is set to the the union of all named graphs.
 
 There is no graphical user interface. Please use <https://github.com/nfdi4objects/n4o-graph-apis> as frontend.
 
+To import data into the triple store use <https://github.com/nfdi4objects/n4o-graph-importer> to make sure the data conforms to requirements of the Knowledge Graph.
+
 ## Build and test
 
 A [Docker image](https://github.com/nfdi4objects/n4o-fuseki/pkgs/container/n4o-fuseki) is automatically build via GitHub action (except for changes that only affect this Markdown file).
@@ -48,7 +56,7 @@ To locally build the image for testing:
 docker compose build
 ~~~
 
-The script `test.sh` runs queries against all APIs to make sure data can be read and written (port can be set with `PORT`).
+The script [`test-apis.sh`](test-apis.sh) runs queries against all APIs to make sure data can be read and written (port can be set with `PORT`).
 
 ## License
 
