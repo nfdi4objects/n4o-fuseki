@@ -1,6 +1,6 @@
 # Fuseki Docker image for NFDI4Objects
 
-[![Docker image](https://github.com/nfdi4objects/n4o-fuseki/actions/workflows/docker.yml/badge.svg)](https://github.com/nfdi4objects/n4o-fuseki/actions/workflows/docker.yml)
+[![Docker image](https://github.com/nfdi4objects/n4o-fuseki/actions/workflows/docker.yml/badge.svg)](https://github.com/orgs/nfdi4objects/packages/container/package/n4o-fuseki)
 
 This [git repository](https://github.com/nfdi4objects/n4o-fuseki) contains sources to generate a Docker image configured to be used as Triple store of the [NFDI4Objects Knowledge Graph](https://graph.nfdi4objects.net/).
 
