@@ -113,7 +113,7 @@ RUN \
 ## Default environment variables.
 ENV \
     JAVA_HOME=${JAVA_MINIMAL}           \
-    JAVA_OPTIONS="-Xmx2048m -Xms2048m"  \
+    JAVA_OPTIONS="-Xmx6144m -Xms6144m"  \
     JENA_VERSION=${JENA_VERSION}        \
     FUSEKI_JAR="${FUSEKI_JAR}"          \
     FUSEKI_DIR="${FUSEKI_DIR}"

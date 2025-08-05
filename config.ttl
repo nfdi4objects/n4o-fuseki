@@ -28,6 +28,6 @@
 	tdb:unionDefaultGraph true ;
     tdb:location  "/fuseki/databases/n4o" ;
 
-    # Query timeout on this dataset (1s, 1000 milliseconds)
-    ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ]  
+    # Query timeout on this dataset (10s, 10000 milliseconds)
+    ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "10000" ]  
      .
